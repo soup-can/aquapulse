@@ -1,17 +1,22 @@
 package com.soupcan.aquapulse.core.view.screen;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
+import com.soupcan.aquapulse.core.model.world.GameWorld;
+import com.soupcan.aquapulse.core.view.render.GameRenderer;
 
 /**
  * The screen in which the actual gameplay takes place.
  *
  * @author Zachary Latta
  */
-public class GameScreen implements Screen, InputProcessor
+public class GameScreen extends AbstractScreen
 {
+    public GameScreen()
+    {
+        super(new GameWorld(), new GameRenderer());
+    }
+
     @Override
     public void show()
     {
