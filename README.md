@@ -11,12 +11,12 @@ Configuring Development Environment
 Maven is being used to handle the dependencies of the project. Setting up the project should be as cloning the
 repository and importing it into your IDE.
 
-#Commands
+###Commands
 
 Taken from the [wiki](http://code.google.com/p/libgdx/wiki/MavenProjectSetup)).
 
 
-##Desktop
+####Desktop
 
 To create a runnable jar file for the desktop, run:
 
@@ -29,7 +29,7 @@ file via:
 `java -jar test-desktop-1.0-SNAPSHOT-jar-with-dependencies.jar`
 
 
-##Android
+####Android
 
 To create an unsigned APK for Android, run:
 
@@ -43,7 +43,7 @@ connected device or emulator, run
 For more information on Android goals, see the [Maven Android plugin](http://code.google.com/p/maven-android-plugin/).
 
 
-##HTML5/GWT
+####HTML5/GWT
 
 To compile the HTML5 project to Javascript, run:
 
