@@ -11,6 +11,7 @@ public class AquapulseDesktop
     {
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
         config.useGL20 = true;
+        config.title = "Aquapulse";
         new LwjglApplication(new Aquapulse(), config);
     }
 }
