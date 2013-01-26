@@ -13,7 +13,7 @@ repository and importing it into your IDE.
 
 ###Commands
 
-Taken from the [wiki](http://code.google.com/p/libgdx/wiki/MavenProjectSetup)).
+Taken from the [wiki](http://code.google.com/p/libgdx/wiki/MavenProjectSetup).
 
 
 ####Desktop
