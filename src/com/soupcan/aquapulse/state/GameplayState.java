@@ -1,5 +1,6 @@
 package com.soupcan.aquapulse.state;
 
+import com.soupcan.aquapulse.controller.MovementHandler;
 import com.soupcan.aquapulse.model.engine.Level;
 import com.soupcan.aquapulse.model.entity.Player;
 import org.newdawn.slick.GameContainer;
@@ -18,6 +19,8 @@ public class GameplayState extends BasicGameState
     private Level level;
     private Player player;
 
+    private MovementHandler movementHandler;
+
     public GameplayState(int stateID)
     {
         this.stateID = stateID;
@@ -35,6 +38,8 @@ public class GameplayState extends BasicGameState
         background = new Image("res/img/background.png");
         level = new Level("res/map/testmap03.tmx");
         player = new Player(new Vector2f(400, 400));
+
+        movementHandler = new MovementHandler(player);
     }
 
     @Override
@@ -46,8 +51,10 @@ public class GameplayState extends BasicGameState
     }
 
     @Override
-    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException
+    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int delta) throws SlickException
     {
+        movementHandler.processInput(gameContainer.getInput(), delta);
+
         player.update();
     }
 }
