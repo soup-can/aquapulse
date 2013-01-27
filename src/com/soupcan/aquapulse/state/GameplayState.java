@@ -1,5 +1,6 @@
 package com.soupcan.aquapulse.state;
 
+import com.soupcan.aquapulse.AquapulseGame;
 import com.soupcan.aquapulse.controller.MovementController;
 import com.soupcan.aquapulse.model.engine.Level;
 import com.soupcan.aquapulse.model.engine.LevelGroup;
@@ -58,7 +59,6 @@ public class GameplayState extends BasicGameState
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException
     {
         background = new Image("res/img/ui/background.png");
-        levels.addLevel(new Level("res/map/finalmap01.tmx"));
 
         inhaleSound = new Sound("res/sound/inhale.wav");
         exhaleSound = new Sound("res/sound/exhale.wav");
@@ -72,12 +72,12 @@ public class GameplayState extends BasicGameState
         player.render();
 
         // Draw the heart rate meter as a simple rectangle.
-        graphics.setColor(new Color(player.heartRate / player.MAX_HEART_RATE, .1f, 1 - player.heartRate/player.MAX_HEART_RATE ));
+        graphics.setColor(new Color(player.heartRate / player.MAX_HEART_RATE, .1f, 1 - player.heartRate / player.MAX_HEART_RATE));
         graphics.fillRoundRect(20, // x in pixels, from left edge of screen
-                               40, // y in pixels, from top edge of screen
-                               player.heartRate * 4, // width of rectangle
-                               10, // height of rectangle
-                               5); // rectangle rounded corner radius in pixels
+                40, // y in pixels, from top edge of screen
+                player.heartRate * 4, // width of rectangle
+                10, // height of rectangle
+                5); // rectangle rounded corner radius in pixels
     }
 
     @Override
@@ -111,13 +111,9 @@ public class GameplayState extends BasicGameState
         levels.scroll(delta);
         player.update();
 
-        // Clamp the player heart rate.
-        if (player.heartRate < player.MIN_HEART_RATE) player.heartRate = player.MIN_HEART_RATE;
-        if (player.heartRate > player.MAX_HEART_RATE) player.heartRate = player.MAX_HEART_RATE;
-
         if ((player.heartRate < player.MIN_HEART_RATE) || (player.heartRate > player.MAX_HEART_RATE))
         {
-            // Game Over
+            stateBasedGame.enterState(AquapulseGame.GAME_OVER_STATE);
         }
 
         // Occasionally play the bubble sound
