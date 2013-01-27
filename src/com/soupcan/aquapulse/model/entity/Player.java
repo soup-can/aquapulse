@@ -5,8 +5,8 @@ import org.newdawn.slick.geom.Vector2f;
 
 public class Player extends Entity
 {
-    public static final int WIDTH = 293;
-    public static final int HEIGHT = 137;
+    public static final int WIDTH = 68;
+    public static final int HEIGHT = 32;
     private static final String SHEET_REF = "res/img/player.png";
 
     private SpriteAnimation animation;
