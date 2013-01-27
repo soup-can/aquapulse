@@ -7,7 +7,7 @@ import org.newdawn.slick.geom.Vector2f;
 public class Entity
 {
     public Vector2f position;
-    protected Shape bounds;
+    public Rectangle bounds;
 
     public Entity(Vector2f position, float width, float height)
     {

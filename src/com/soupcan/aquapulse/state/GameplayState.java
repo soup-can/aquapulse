@@ -1,11 +1,11 @@
 package com.soupcan.aquapulse.state;
 
-import com.soupcan.aquapulse.controller.InputController;
+import com.soupcan.aquapulse.controller.MovementController;
 import com.soupcan.aquapulse.model.engine.Level;
 import com.soupcan.aquapulse.model.engine.LevelGroup;
 import com.soupcan.aquapulse.model.entity.Player;
-import org.newdawn.slick.*;
 import org.newdawn.slick.geom.RoundedRectangle;
+import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -21,8 +21,8 @@ public class GameplayState extends BasicGameState
     private Sound inhaleSound;
     private Sound exhaleSound;
     private boolean readyToExhale = true;
-
-    private InputController inputController;
+    
+    private MovementController movementController;
 
     public GameplayState(int stateID)
     {
@@ -38,17 +38,14 @@ public class GameplayState extends BasicGameState
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException
     {
-        background = new Image("res/img/background.png");
+        background = new Image("res/img/ui/background.png");
         levels = new LevelGroup();
         player = new Player(new Vector2f(400, 400));
 
-        inputController = new InputController(player);
+        movementController = new MovementController(player, levels);
 
         levels.addLevel(new Level("res/map/finalmap01.tmx"));
-        levels.addLevel(new Level("res/map/finalmap02.tmx"));
-        levels.addLevel(new Level("res/map/testmap03.tmx"));
-        levels.addLevel(new Level("res/map/testmap04.tmx"));
-
+        
         Music music = new Music("res/sound/game_music.wav");
         music.loop();
 
@@ -59,7 +56,7 @@ public class GameplayState extends BasicGameState
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException
     {
-        background.draw(-150, 0, background.getWidth(), 600);
+        background.draw(0, 0);
         levels.render();
         player.render();
 
@@ -75,7 +72,21 @@ public class GameplayState extends BasicGameState
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int delta) throws SlickException
     {
-        inputController.processInput(gameContainer.getInput(), delta);
+        // Check collision from map scrolling
+        for(int i = 0; i < levels.size(); i++)
+        {
+            for(int j = 0; j < levels.get(i).bounds.size(); j++)
+            {
+                Shape tileBlock = levels.get(i).bounds.get(j);
+
+                if(collides(player.bounds, tileBlock) && player.bounds.getMaxX() >= tileBlock.getMinX())
+                {
+                    player.position.x -= LevelGroup.SCROLL_COEFF * delta;
+                }
+            }
+        }
+
+        movementController.processInput(gameContainer.getInput(), delta);
 
         levels.scroll(delta);
         player.update();
@@ -98,5 +109,10 @@ public class GameplayState extends BasicGameState
 
         // Occasionally play the inhale/exhale sound
         //if (Math.random())
+    }
+
+    private boolean collides(Shape shape1, Shape shape2)
+    {
+        return shape1.intersects(shape2);
     }
 }
