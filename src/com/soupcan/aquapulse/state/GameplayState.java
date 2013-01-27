@@ -4,6 +4,7 @@ import com.soupcan.aquapulse.controller.MovementController;
 import com.soupcan.aquapulse.model.engine.Level;
 import com.soupcan.aquapulse.model.engine.LevelGroup;
 import com.soupcan.aquapulse.model.entity.Player;
+import org.newdawn.slick.*;
 import org.newdawn.slick.geom.RoundedRectangle;
 import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.geom.Vector2f;
@@ -21,12 +22,15 @@ public class GameplayState extends BasicGameState
     private Sound inhaleSound;
     private Sound exhaleSound;
     private boolean readyToExhale = true;
-    
+
+    private Music music;
+
     private MovementController movementController;
 
-    public GameplayState(int stateID)
+    public GameplayState(int stateID) throws SlickException
     {
         this.stateID = stateID;
+        music = new Music("res/sound/game_music.wav");
     }
 
     @Override
@@ -45,9 +49,6 @@ public class GameplayState extends BasicGameState
         movementController = new MovementController(player, levels);
 
         levels.addLevel(new Level("res/map/finalmap01.tmx"));
-        
-        Music music = new Music("res/sound/game_music.wav");
-        music.loop();
 
         inhaleSound = new Sound("res/sound/inhale.wav");
         exhaleSound = new Sound("res/sound/exhale.wav");
@@ -72,6 +73,9 @@ public class GameplayState extends BasicGameState
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int delta) throws SlickException
     {
+        if (!music.playing()) music.loop();
+
+
         // Check collision from map scrolling
         for(int i = 0; i < levels.size(); i++)
         {
