@@ -19,6 +19,8 @@ public class MainMenuState extends BasicGameState
     private Sound hover;
     private Sound select;
 
+    private Music music;
+
     boolean insideStart;
 
     public MainMenuState(int stateId)
@@ -41,8 +43,12 @@ public class MainMenuState extends BasicGameState
 
         startButtonPosition = new Vector2f(325, 400);
 
-        hover = new Sound("res/snd/ui/hover.wav");
-        select = new Sound("res/snd/ui/select.wav");
+        hover = new Sound("res/sound/ui/hover.wav");
+        select = new Sound("res/sound/ui/select.wav");
+
+        music = new Music("res/sound/menu_music.wav");
+
+        music.loop();
 
         insideStart = false;
     }
@@ -83,6 +89,7 @@ public class MainMenuState extends BasicGameState
             if(input.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON))
             {
                 select.play();
+                music.stop();
                 stateBasedGame.enterState(AquapulseGame.GAMEPLAY_STATE);
             }
         }
