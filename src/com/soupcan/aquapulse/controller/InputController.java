@@ -3,13 +3,13 @@ package com.soupcan.aquapulse.controller;
 import com.soupcan.aquapulse.model.entity.Player;
 import org.newdawn.slick.Input;
 
-public class MovementHandler
+public class InputController
 {
     public static float MOVEMENT_COEFFICIENT = 0.1f;
 
     private Player player;
 
-    public MovementHandler(Player player)
+    public InputController(Player player)
     {
         this.player = player;
     }
