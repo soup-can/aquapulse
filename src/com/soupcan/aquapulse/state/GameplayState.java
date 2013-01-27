@@ -24,8 +24,14 @@ public class GameplayState extends BasicGameState
     private Sound exhaleSound;
     private boolean readyToExhale = true;
 
+    private Sound normalHeartBeat;
+    private Sound rapidHeartBeat;
+    private Sound slowHeartBeat;
+
     private Music music;
     private Sound heartBeat;
+
+    private int deltaCount;
 
     private MovementController movementController;
 
@@ -33,7 +39,6 @@ public class GameplayState extends BasicGameState
     {
         this.stateID = stateID;
         music = new Music("res/sound/game_music.wav");
-        heartBeat = new Sound("res/sound/");
     }
 
     @Override
@@ -55,6 +60,8 @@ public class GameplayState extends BasicGameState
         levels.addLevel(new Level("res/map/finalmap03.tmx"));
 
         movementController = new MovementController(player, levels);
+
+        deltaCount = 0;
     }
 
     @Override
@@ -64,6 +71,9 @@ public class GameplayState extends BasicGameState
 
         inhaleSound = new Sound("res/sound/inhale.wav");
         exhaleSound = new Sound("res/sound/exhale.wav");
+        normalHeartBeat = new Sound("res/sound/meter_normal.wav");
+        rapidHeartBeat = new Sound("res/sound/meter_rapid.wav");
+        slowHeartBeat = new Sound("res/sound/meter_slow.wav");
     }
 
     @Override
@@ -80,19 +90,13 @@ public class GameplayState extends BasicGameState
                 player.heartRate * 4, // width of rectangle
                 10, // height of rectangle
                 5); // rectangle rounded corner radius in pixels
-
-        for (int index = 0; index < levels.size(); index++)
-        {
-            for (int j = 0; j < levels.get(index).bounds.size(); j++)
-            {
-                ShapeRenderer.draw(levels.get(index).bounds.get(j));
-            }
-        }
     }
 
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int delta) throws SlickException
     {
+        deltaCount += delta;
+
         if (!music.playing()) music.loop();
 
 
@@ -132,6 +136,34 @@ public class GameplayState extends BasicGameState
         {
             Sound bubbles = new Sound("res/sound/bubbles.wav");
             bubbles.play();
+        }
+
+        if(player.heartRate > 150)
+        {
+            if(player.heartRate >= 500)
+            {
+                deltaCount = 0;
+
+                rapidHeartBeat.play();
+            }
+        }
+        else if(player.heartRate > 50)
+        {
+            if(deltaCount >= 1000)
+            {
+                deltaCount = 0;
+
+                normalHeartBeat.play();
+            }
+        }
+        else
+        {
+            if (player.heartRate >= 2000)
+            {
+                deltaCount = 0;
+
+                slowHeartBeat.play();
+            }
         }
 
         // Occasionally play the inhale/exhale sound
