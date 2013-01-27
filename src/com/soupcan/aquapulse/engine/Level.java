@@ -1,4 +1,4 @@
-package com.soupcan.aquapulse.entity;
+package com.soupcan.aquapulse.engine;
 
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.tiled.TiledMap;
