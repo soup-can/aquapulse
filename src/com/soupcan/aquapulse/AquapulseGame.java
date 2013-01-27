@@ -1,5 +1,6 @@
 package com.soupcan.aquapulse;
 
+import com.soupcan.aquapulse.state.GameOverState;
 import com.soupcan.aquapulse.state.GameplayState;
 import com.soupcan.aquapulse.state.MainMenuState;
 import org.newdawn.slick.AppGameContainer;
@@ -11,6 +12,7 @@ public class AquapulseGame extends StateBasedGame
 {
     public static final int MAIN_MENU_STATE = 0;
     public static final int GAMEPLAY_STATE = 1;
+    public static final int GAME_OVER_STATE = 2;
 
     public AquapulseGame()
     {
@@ -31,5 +33,6 @@ public class AquapulseGame extends StateBasedGame
     {
         this.addState(new MainMenuState(MAIN_MENU_STATE));
         this.addState(new GameplayState(GAMEPLAY_STATE));
+        this.addState(new GameOverState(GAME_OVER_STATE));
     }
 }

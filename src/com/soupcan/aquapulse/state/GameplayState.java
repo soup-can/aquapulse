@@ -1,18 +1,17 @@
 package com.soupcan.aquapulse.state;
 
+import com.soupcan.aquapulse.AquapulseGame;
 import com.soupcan.aquapulse.controller.MovementController;
 import com.soupcan.aquapulse.model.engine.Level;
 import com.soupcan.aquapulse.model.engine.LevelGroup;
 import com.soupcan.aquapulse.model.entity.Player;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Shape;
-import org.newdawn.slick.geom.ShapeRenderer;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+
+import java.util.Random;
 
 public class GameplayState extends BasicGameState
 {
@@ -36,15 +35,22 @@ public class GameplayState extends BasicGameState
     }
 
     @Override
+    public void enter(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException
+    {
+        super.enter(gameContainer, stateBasedGame);
+
+        player = new Player(new Vector2f(400, 400));
+
+        levels = new LevelGroup();
+        levels.addLevel(new Level("res/map/finalmap01.tmx"));
+
+        movementController = new MovementController(player, levels);
+    }
+
+    @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException
     {
         background = new Image("res/img/ui/background.png");
-        levels = new LevelGroup();
-        player = new Player(new Vector2f(400, 400));
-
-        movementController = new MovementController(player, levels);
-
-        levels.addLevel(new Level("res/map/finalmap01.tmx"));
     }
 
     @Override
@@ -70,6 +76,12 @@ public class GameplayState extends BasicGameState
                     player.position.x -= LevelGroup.SCROLL_COEFF * delta;
                 }
             }
+        }
+
+        // Checks if player is off screen and ends the game if they are.
+        if(player.position.x + Player.WIDTH < 0)
+        {
+            stateBasedGame.enterState(AquapulseGame.GAME_OVER_STATE);
         }
 
         movementController.processInput(gameContainer.getInput(), delta);
