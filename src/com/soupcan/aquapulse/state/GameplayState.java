@@ -52,7 +52,7 @@ public class GameplayState extends BasicGameState
     {
         super.enter(gameContainer, stateBasedGame);
 
-        player = new Player(new Vector2f(400, 400));
+        player = new Player(new Vector2f(100, 400));
 
         levels = new LevelGroup();
         levels.addLevel(new Level("res/map/finalmap01.tmx"));
@@ -121,7 +121,7 @@ public class GameplayState extends BasicGameState
             stateBasedGame.enterState(AquapulseGame.GAME_OVER_STATE);
         }
 
-        movementController.processInput(gameContainer.getInput(), delta);
+        movementController.processInput(gameContainer.getInput(), delta, stateBasedGame);
 
         levels.scroll(delta);
         player.update();
