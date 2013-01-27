@@ -38,7 +38,7 @@ public class GameplayState extends BasicGameState
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException
     {
-        background = new Image("res/img/background.png");
+        background = new Image("res/img/ui/background.png");
         levels = new LevelGroup();
         player = new Player(new Vector2f(400, 400));
 
@@ -50,7 +50,7 @@ public class GameplayState extends BasicGameState
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException
     {
-        background.draw(-150, 0, background.getWidth(), 600);
+        background.draw(0, 0);
         levels.render();
         player.render();
     }
