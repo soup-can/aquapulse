@@ -1,4 +1,4 @@
-package com.soupcan.aquapulse.engine;
+package com.soupcan.aquapulse.model.engine;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;

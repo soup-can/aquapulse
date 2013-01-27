@@ -1,7 +1,7 @@
 package com.soupcan.aquapulse.state;
 
-import com.soupcan.aquapulse.engine.Level;
-import com.soupcan.aquapulse.entity.Player;
+import com.soupcan.aquapulse.model.engine.Level;
+import com.soupcan.aquapulse.model.entity.Player;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;

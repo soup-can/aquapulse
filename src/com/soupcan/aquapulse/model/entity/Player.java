@@ -1,6 +1,6 @@
-package com.soupcan.aquapulse.entity;
+package com.soupcan.aquapulse.model.entity;
 
-import com.soupcan.aquapulse.engine.SpriteAnimation;
+import com.soupcan.aquapulse.model.engine.SpriteAnimation;
 import org.newdawn.slick.geom.Vector2f;
 
 public class Player extends Entity
