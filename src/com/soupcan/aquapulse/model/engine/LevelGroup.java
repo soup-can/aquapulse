@@ -37,7 +37,7 @@ public class LevelGroup
     {
         for(Level level : levels)
         {
-            level.render();
+            level.render(new int[] {1, 2});
         }
     }
 

@@ -101,7 +101,8 @@ public class GameplayState extends BasicGameState
         }
 
         // Checks if player is off screen and ends the game if they are.
-        if(player.position.x + Player.WIDTH < 0)
+        if(player.position.x + Player.WIDTH < 0 || player.position.y - Player.HEIGHT > 600 |
+                player.position.y + Player.HEIGHT < 0)
         {
             stateBasedGame.enterState(AquapulseGame.GAME_OVER_STATE);
         }
