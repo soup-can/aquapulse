@@ -8,6 +8,7 @@ import com.soupcan.aquapulse.model.entity.Player;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.RoundedRectangle;
 import org.newdawn.slick.geom.Shape;
+import org.newdawn.slick.geom.ShapeRenderer;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -51,6 +52,8 @@ public class GameplayState extends BasicGameState
 
         levels = new LevelGroup();
         levels.addLevel(new Level("res/map/finalmap01.tmx"));
+        levels.addLevel(new Level("res/map/finalmap02.tmx"));
+        levels.addLevel(new Level("res/map/finalmap03.tmx"));
 
         movementController = new MovementController(player, levels);
     }
@@ -78,6 +81,14 @@ public class GameplayState extends BasicGameState
                 player.heartRate * 4, // width of rectangle
                 10, // height of rectangle
                 5); // rectangle rounded corner radius in pixels
+
+        for (int index = 0; index < levels.size(); index++)
+        {
+            for (int j = 0; j < levels.get(index).bounds.size(); j++)
+            {
+                ShapeRenderer.draw(levels.get(index).bounds.get(j));
+            }
+        }
     }
 
     @Override

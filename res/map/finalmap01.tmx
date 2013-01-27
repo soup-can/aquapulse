@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="96" height="19" tilewidth="32" tileheight="32">
- <tileset firstgid="1" name="tileset" tilewidth="32" tileheight="32">
-  <image source="full_tileset.png" width="256" height="96"/>
+ <tileset firstgid="1" name="full_tileset" tilewidth="32" tileheight="32">
+  <image source="full_tileset.png" trans="ff00ff" width="256" height="96"/>
  </tileset>
  <layer name="collision" width="96" height="19">
   <data encoding="base64" compression="zlib">
-   eJztlsEKgDAMxXrz//9YvEpFO9e+lC2wm2iaDfUws2OvvRZdUdS+5DbVqPus3P6Oupe6e4c9Vbcd7fPlug79L4h9o86jc83k7327tPdcR+eZSdbZorX3HAlkz0hp77kRyHKitfecCGQ7Udp7LgSqnJTdnxyiniqn7GeSziSxP6lPNsSzQXCogtbeQB5vzPjGqN47pP+UKN28Z7evnonoewJrRRWG
-  </data>
- </layer>
- <layer name="terrain_2" width="96" height="19">
-  <data encoding="base64" compression="zlib">
-   eJzt16ENADAMBLEfIO3+4xYEVwoLsSc4egkAAMDM2Q4AAAAglf6zux0CHw9WJwA1
+   eJztlsEOgCAMxbjx/39svHlBBLb1DWmym8FSSaSWUuoZbEahfZXbREP3+Xv/J3QrunmG70m3ne3z5bkM/W/oxrv0X12Xbr1T/5W1VZt77NWSrP0tHBXwclLq3nJSwNuJ7N1zUSDKiezechj1pJy836l0Jsn+K8/sguLZUHCI4vSfx+IfQ90FlO4po2Tztm4fvSdFX++mZ97nAqzjFoI=
   </data>
  </layer>
  <layer name="terrain" width="96" height="19">
   <data encoding="base64" compression="zlib">
-   eJztl8kOwyAMRNP1ELWVuv7/pxYOSAjVLniF0pHmmpg3Bsy6LMv6t5tvjfaut2c2FLfq2gEXC98JbKz1q1mMwL5UzGL0s4vDfR98QHxkfFtK3vsF6w2Mfc4W4ngKPiO+fMdjIq8MOL2ds4U4WvNPPUHdV5Y5cM/zGv6P4CfiF7MGqKb4X87Zpp2DxF1aw99a0jVp5CA1x8zAP0kqB8kZcib+SZwcpOf3GfknteSg9W7K71boHoXmf62536MnoCx6eK9C86cWm5ae6OHtpy2Iv/TcSamplzNTU5/4e7KPGoX/Jnhb6R3wjfL9pcW+pVbqWqwU10KZr7zqptaL2TKLsnc4dUvV+wZReiFa
+   eJztl9sOwjAIhjtPifOQuKnv/6jWCxKyBISW0m71T/7bjX5QClMIYVJ47MgaLqnW6hH6yMUlgY23tpgLOM9syMlDOBdr7V05zA/RR8anjG9b6Zuj2ow5U8JsKY7X6Bvj+288LoJ7Upu1hj9mS3H05g81kXqvWssD13sk/J/RL8ZvERW5cEw5ve0cfDnj90ja7yX8vWUV0/LdrlXjnLbMfymrvpRS55R64g9KzUOJ2b1H/iDpjldyZ8JvK/WOUvN/qbkf87d+2ylRO14Luyo1f5aqTagJjn3ujLomefPXxNRKzyypP/90DdE7offEN6j9y7o3a2JNPYuX4CzaGatW3IMiRqk9c7GsnZy4reLV1GvJ3XQU/D/XLcb7AW6mIZ8=
+  </data>
+ </layer>
+ <layer name="extra" width="96" height="19">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20JT6AAAAAAAAAAPgYcgAAB
   </data>
  </layer>
 </map>

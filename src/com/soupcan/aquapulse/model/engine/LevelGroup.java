@@ -1,5 +1,7 @@
 package com.soupcan.aquapulse.model.engine;
 
+import org.newdawn.slick.geom.Rectangle;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +25,14 @@ public class LevelGroup
             Level preceding = levels.get(levels.size() - 1);
 
             level.position.x = preceding.position.x + preceding.getWidth() + 1;
+
+            for(int i = 0; i < level.bounds.size(); i++)
+            {
+                level.bounds.get(i).setBounds(level.bounds.get(i).getX() + level.position.x,
+                        level.bounds.get(i).getY() + level.position.y,
+                        level.bounds.get(i).getWidth(),
+                        level.bounds.get(i).getHeight());
+            }
         }
         catch(ArrayIndexOutOfBoundsException e)
         {

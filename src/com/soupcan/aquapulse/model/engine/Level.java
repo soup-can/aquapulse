@@ -79,4 +79,9 @@ public class Level
     {
         return map.getHeight();
     }
+
+    public int getTileId(int x, int y, int layer)
+    {
+        return map.getTileId(x, y, layer);
+    }
 }
