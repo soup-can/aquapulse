@@ -140,14 +140,14 @@ public class GameplayState extends BasicGameState
 
         if(player.heartRate > 150)
         {
-            if(player.heartRate >= 500)
+            if(deltaCount >= 500)
             {
                 deltaCount = 0;
 
                 rapidHeartBeat.play();
             }
         }
-        else if(player.heartRate > 50)
+        else if(player.heartRate < 150 && player.heartRate > 50)
         {
             if(deltaCount >= 1000)
             {
@@ -156,9 +156,9 @@ public class GameplayState extends BasicGameState
                 normalHeartBeat.play();
             }
         }
-        else
+        else if(player.heartRate < 50)
         {
-            if (player.heartRate >= 2000)
+            if (deltaCount >= 2000)
             {
                 deltaCount = 0;
 
