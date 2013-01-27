@@ -1,7 +1,5 @@
 package com.soupcan.aquapulse.model.engine;
 
-import org.newdawn.slick.geom.Rectangle;
-
 import java.util.ArrayList;
 import java.util.List;
 

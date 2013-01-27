@@ -3,7 +3,6 @@ package com.soupcan.aquapulse.controller;
 import com.soupcan.aquapulse.model.engine.LevelGroup;
 import com.soupcan.aquapulse.model.entity.Player;
 import org.newdawn.slick.Input;
-import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Shape;
 
 public class MovementController

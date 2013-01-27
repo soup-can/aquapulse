@@ -6,14 +6,11 @@ import com.soupcan.aquapulse.model.engine.Level;
 import com.soupcan.aquapulse.model.engine.LevelGroup;
 import com.soupcan.aquapulse.model.entity.Player;
 import org.newdawn.slick.*;
-import org.newdawn.slick.geom.RoundedRectangle;
 import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.geom.ShapeRenderer;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
-
-import java.util.Random;
 
 public class GameplayState extends BasicGameState
 {
@@ -28,6 +25,7 @@ public class GameplayState extends BasicGameState
     private boolean readyToExhale = true;
 
     private Music music;
+    private Sound heartBeat;
 
     private MovementController movementController;
 
@@ -35,6 +33,7 @@ public class GameplayState extends BasicGameState
     {
         this.stateID = stateID;
         music = new Music("res/sound/game_music.wav");
+        heartBeat = new Sound("res/sound/");
     }
 
     @Override
