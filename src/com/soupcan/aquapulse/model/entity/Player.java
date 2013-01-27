@@ -11,6 +11,10 @@ public class Player extends Entity
 
     private SpriteAnimation animation;
 
+    final public float MAX_HEART_RATE = 190;
+    final public float MIN_HEART_RATE = 0;
+    public float heartRate = 100;
+
     public Player(Vector2f position)
     {
         super(position, WIDTH, HEIGHT);

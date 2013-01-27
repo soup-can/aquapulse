@@ -5,6 +5,7 @@ import com.soupcan.aquapulse.state.GameplayState;
 import com.soupcan.aquapulse.state.MainMenuState;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
