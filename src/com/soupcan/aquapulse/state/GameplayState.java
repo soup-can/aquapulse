@@ -97,6 +97,6 @@ public class GameplayState extends BasicGameState
         }
 
         // Occasionally play the inhale/exhale sound
-        if (Math.random())
+        //if (Math.random())
     }
 }
