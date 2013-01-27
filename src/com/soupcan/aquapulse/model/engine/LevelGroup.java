@@ -46,6 +46,21 @@ public class LevelGroup
         for(int index = 0; index < levels.size(); index++)
         {
             levels.get(index).position.x -= SCROLL_COEFF * delta;
+
+            for(int i = 0; i < levels.get(index).bounds.size(); i++)
+            {
+                levels.get(index).bounds.get(i).setX(levels.get(index).bounds.get(i).getX() - SCROLL_COEFF * delta);
+            }
         }
+    }
+
+    public int size()
+    {
+        return levels.size();
+    }
+
+    public Level get(int index)
+    {
+        return levels.get(index);
     }
 }
