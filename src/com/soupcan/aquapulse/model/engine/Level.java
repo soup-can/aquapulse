@@ -1,50 +1,63 @@
 package com.soupcan.aquapulse.model.engine;
 
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.tiled.TiledMap;
 
 public class Level
 {
+    public Vector2f position;
+
     private TiledMap map;
 
     public Level(String mapLocation) throws SlickException
     {
         map = new TiledMap(mapLocation);
+        position = new Vector2f();
+    }
+
+    public Level(String mapLocation, Vector2f position) throws SlickException
+    {
+        map = new TiledMap(mapLocation);
+
+        this.position = position;
     }
 
     public void render()
     {
-        map.render(0, 0);
+        map.render((int) position.x, (int) position.y);
     }
 
     public void render(int layer)
     {
-        map.render(0, 0, layer);
+        map.render((int) position.x, (int) position.y, layer);
     }
 
     public void render(int[] layer)
     {
         for (int index = 0; index < layer.length; index++)
         {
-            map.render(0, 0, layer[index]);
+            map.render((int) position.x, (int) position.y, layer[index]);
         }
     }
 
-    public void render(int x, int y)
+    public int getWidth()
     {
-        map.render(x, y);
+        return map.getWidth() * map.getTileWidth();
     }
 
-    public void render(int x, int y, int layer)
+    public int getHeight()
     {
-        map.render(x, y, layer);
+        return map.getHeight() * map.getHeight();
     }
 
-    public void render(int x, int y, int[] layer)
+    public int getHorizontalTiles()
     {
-        for (int index = 0; index < layer.length; index++)
-        {
-            map.render(x, y, layer[index]);
-        }
+        return map.getWidth();
+    }
+
+    public int getVerticalTiles()
+    {
+        return map.getHeight();
     }
 }

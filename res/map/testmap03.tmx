@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="96" height="23" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="full_tileset" tilewidth="32" tileheight="32">
+  <image source="full_tileset.png" trans="ff00ff" width="384" height="96"/>
+ </tileset>
+ <layer name="collision" width="96" height="23">
+  <properties>
+   <property name="collision" value=""/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt2EEOABAMRFGHcP+ziq3EQtFO+S+x1gwqlAIAALxVw1CuLduwZOLFc66ZsQaVmhT3xg2K+f+E/GORfyzVvgiMMt3rL1nNlTXYs7unOQt2pzP7tTepvsui7owMfx9RyOIdZA4A6Br3uRDN
+  </data>
+ </layer>
+ <layer name="background" width="96" height="23">
+  <data encoding="base64" compression="zlib">
+   eJzt2TkOgDAMRNHUkJpQA/c/I00iUYGwNYZE/0nTZhmXnlNKWZip48zibvLljlUUxWzUvUTOttSeDlHuZrMYUx7O9cb6Lssf9trT5kw7500i74p4l+UPAAAAAAAAAAAoeHY3X+8He07r0LO7idgTjZrWoWd3E7EnGjV0+I+cVp1Frw==
+  </data>
+ </layer>
+ <layer name="terrain" width="96" height="23">
+  <data encoding="base64" compression="zlib">
+   eJzt2NEOQDAMheHhmnu8/3uyhEREYqvWTP8vOXHbdLOpEAAAHg2kaKbMfL2+2pJrNO73MbOgPg/iGljvC3oPAEAdmjXtTbpi1f3X3vfU71rW4JnzPpfMFrwLMrH3mjOe17Mp5ay+ivXMXerOkPZDmrf/I1msi0Zy7y6im357AgB8WQCNnx32
+  </data>
+ </layer>
+ <layer name="coral" width="96" height="23">
+  <data encoding="base64" compression="zlib">
+   eJzt0MENgEAMA8GUAPcG+i/z8iMdWIgZaf+WqwAA4HV052hl5/yO/7P8n+X/rKu7R092DgAAAAAfswHgMQHm
+  </data>
+ </layer>
+</map>
