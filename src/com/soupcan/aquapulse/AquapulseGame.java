@@ -25,6 +25,7 @@ public class AquapulseGame extends StateBasedGame
 
         app.setTargetFrameRate(30);
         app.setDisplayMode(800, 600, false);
+        app.setAlwaysRender(true);
         app.setShowFPS(false);
         app.start();
     }
