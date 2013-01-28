@@ -72,7 +72,7 @@ public class GameOverState extends BasicGameState
         hover = new Sound("res/sound/ui/hover.wav");
         select = new Sound("res/sound/ui/select.wav");
 
-        music = new Music("res/sound/menu_music.wav");
+        music = new Music("res/sound/menu_music.ogg");
         death1 = new Sound("res/sound/death_01.wav");
         death2 = new Sound("res/sound/death_02.wav");
         death3 = new Sound("res/sound/death_03.wav");

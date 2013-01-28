@@ -36,7 +36,7 @@ public class GameplayState extends BasicGameState
     public GameplayState(int stateID) throws SlickException
     {
         this.stateID = stateID;
-        music = new Music("res/sound/game_music.wav");
+        music = new Music("res/sound/game_music.ogg");
     }
 
     @Override
