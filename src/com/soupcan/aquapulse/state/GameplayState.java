@@ -22,14 +22,12 @@ public class GameplayState extends BasicGameState
 
     private Sound inhaleSound;
     private Sound exhaleSound;
-    private boolean readyToExhale = true;
+    private boolean readyToExhale;
 
     private Sound normalHeartBeat;
     private Sound rapidHeartBeat;
     private Sound slowHeartBeat;
-
     private Music music;
-    private Sound heartBeat;
 
     private int deltaCount;
 
@@ -61,6 +59,7 @@ public class GameplayState extends BasicGameState
 
         movementController = new MovementController(player, levels);
 
+        readyToExhale = false;
         deltaCount = 0;
     }
 
@@ -168,7 +167,19 @@ public class GameplayState extends BasicGameState
         }
 
         // Occasionally play the inhale/exhale sound
-        //if (Math.random())
+        if (Math.random() < 0.005)
+        {
+            if (readyToExhale)
+            {
+                exhaleSound.play();
+                readyToExhale = false;
+            }
+            else
+            {
+                inhaleSound.play();
+                readyToExhale = true;
+            }
+        }
     }
 
     private boolean collides(Shape shape1, Shape shape2)

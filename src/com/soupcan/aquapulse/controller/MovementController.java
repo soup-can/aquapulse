@@ -4,6 +4,8 @@ import com.soupcan.aquapulse.AquapulseGame;
 import com.soupcan.aquapulse.model.engine.LevelGroup;
 import com.soupcan.aquapulse.model.entity.Player;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -16,18 +18,19 @@ public class MovementController
 
     private Player player;
     private LevelGroup levels;
-    private StateBasedGame stateBasedGame;
 
+    private Sound collide;
 
-    public MovementController(Player player, LevelGroup levels)
+    public MovementController(Player player, LevelGroup levels) throws SlickException
     {
+        collide = new Sound("res/sound/collision.wav");
+
         this.player = player;
         this.levels = levels;
     }
 
     public void processInput(Input input, float delta, StateBasedGame stateBasedGame)
     {
-        this.stateBasedGame = stateBasedGame;
         boolean playerMoved = false;
 
         if(input.isKeyDown(Input.KEY_W) || input.isKeyDown(Input.KEY_UP))
@@ -42,6 +45,7 @@ public class MovementController
 
                     if(player.bounds.intersects(tileBlock) && player.bounds.getMinY() <= tileBlock.getMaxY())
                     {
+                        collide.play();
                         stateBasedGame.enterState(AquapulseGame.GAME_OVER_STATE);
                     }
                 }
@@ -64,6 +68,7 @@ public class MovementController
 
                     if(player.bounds.intersects(tileBlock) && player.bounds.getMinX() <= tileBlock.getMaxX())
                     {
+                        collide.play();
                         stateBasedGame.enterState(AquapulseGame.GAME_OVER_STATE);
                     }
                 }
@@ -86,6 +91,7 @@ public class MovementController
 
                     if(player.bounds.intersects(tileBlock) && player.bounds.getMinY() <= tileBlock.getMaxY())
                     {
+                        collide.play();
                         stateBasedGame.enterState(AquapulseGame.GAME_OVER_STATE);
                     }
                 }
@@ -108,6 +114,7 @@ public class MovementController
 
                     if(player.bounds.intersects(tileBlock) && player.bounds.getMaxX() >= tileBlock.getMinX())
                     {
+                        collide.play();
                         stateBasedGame.enterState(AquapulseGame.GAME_OVER_STATE);
                     }
                 }
