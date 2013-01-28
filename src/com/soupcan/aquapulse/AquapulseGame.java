@@ -16,7 +16,7 @@ public class AquapulseGame extends StateBasedGame
 
     public AquapulseGame()
     {
-        super("Aquapulse");
+        super("AquaPulse");
     }
 
     public static void main(String[] args) throws SlickException
@@ -25,6 +25,7 @@ public class AquapulseGame extends StateBasedGame
 
         app.setTargetFrameRate(30);
         app.setDisplayMode(800, 600, false);
+        app.setShowFPS(false);
         app.start();
     }
 
