@@ -99,6 +99,7 @@ public class GameplayState extends BasicGameState
 
         if (!music.playing()) music.loop();
 
+        player.position.y += 0.01 * delta;
 
         // Check collision from map scrolling
         for(int i = 0; i < levels.size(); i++)
@@ -135,34 +136,34 @@ public class GameplayState extends BasicGameState
         if (Math.random() < .005) // 1 in 200 chance
         {
             Sound bubbles = new Sound("res/sound/bubbles.wav");
-            bubbles.play();
+            bubbles.play(1f, 0.25f);
         }
 
         if(player.heartRate > 150)
-        {
-            if(deltaCount >= 500)
-            {
-                deltaCount = 0;
-
-                rapidHeartBeat.play();
-            }
-        }
-        else if(player.heartRate < 150 && player.heartRate > 50)
         {
             if(deltaCount >= 1000)
             {
                 deltaCount = 0;
 
-                normalHeartBeat.play();
+                rapidHeartBeat.play(1f, 0.25f);
+            }
+        }
+        else if(player.heartRate < 150 && player.heartRate > 50)
+        {
+            if(deltaCount >= 2000)
+            {
+                deltaCount = 0;
+
+                normalHeartBeat.play(1f, 0.25f);
             }
         }
         else if(player.heartRate < 50)
         {
-            if (deltaCount >= 2000)
+            if (deltaCount >= 4000)
             {
                 deltaCount = 0;
 
-                slowHeartBeat.play();
+                slowHeartBeat.play(1f, 0.25f);
             }
         }
 
